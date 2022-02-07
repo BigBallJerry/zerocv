@@ -1,51 +1,51 @@
-import { useContext, useState, useEffect, Fragment } from 'react';
-import Box from '@mui/material/Box';
+import { useContext, useState, useEffect, Fragment } from "react";
+import Box from "@mui/material/Box";
 // import {
 //   Accordion,
 //   AccordionSummary,
 //   AccordionDetails,
 // } from './widgets/Accordion';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Typography from '@mui/material/Typography';
-import { AccordionContext } from './AccordionWrapper';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
-import FormGroup from '@mui/material/FormGroup';
-import { useForm, useFieldArray } from 'react-hook-form';
-import Container from '@mui/material/Container';
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Typography from "@mui/material/Typography";
+import { AccordionContext } from "./AccordionWrapper";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
+import FormGroup from "@mui/material/FormGroup";
+import { useForm, useFieldArray } from "react-hook-form";
+import Container from "@mui/material/Container";
 
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DatePicker from '@mui/lab/DatePicker';
-import Button from '@mui/material/Button';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
+import Button from "@mui/material/Button";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 const Experience = ({ name, id, title }) => {
   const { expanded, setExpanded } = useContext(AccordionContext);
 
-  const [startDate, setStartDate] = useState(new Date('2021-01-01T00:00:00'));
-  const [endDate, setEndDate] = useState(new Date('2021-01-01T00:00:00'));
+  const [startDate, setStartDate] = useState(new Date("2021-01-01T00:00:00"));
+  const [endDate, setEndDate] = useState(new Date("2021-01-01T00:00:00"));
 
   const defaultValues = {
     experience: [
       {
-        title: '',
-        employer: '',
+        title: "",
+        employer: "",
         start_date: { startDate },
         end_date: { endDate },
-        city: '',
-        description: '',
+        city: "",
+        description: "",
       },
     ],
   };
 
   const { register, handleSubmit, reset, control, setValue } = useForm({
     defaultValues: {
-      name: 'default name',
+      name: "default name",
       experience: [
         {
           start_date: { startDate },
@@ -56,7 +56,7 @@ const Experience = ({ name, id, title }) => {
   });
   const { fields, append, remove } = useFieldArray({
     control,
-    name: 'experience',
+    name: "experience",
   });
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const Experience = ({ name, id, title }) => {
     setExpanded(newExpanded ? panel : false);
   };
 
-  const [innerExpanded, setInnerExpanded] = useState('expanel_0');
+  const [innerExpanded, setInnerExpanded] = useState("expanel_0");
 
   const handleInnerChange = (panel) => (event, newExpanded) => {
     event.stopPropagation();
@@ -77,8 +77,8 @@ const Experience = ({ name, id, title }) => {
     setInnerExpanded(newExpanded ? panel : false);
   };
 
-  const [titleName, setTitleName] = useState('Experience');
-  const [xrate, setXrate] = useState('XRATE');
+  const [titleName, setTitleName] = useState("Experience");
+  const [xrate, setXrate] = useState("XRATE");
 
   const [dateValue, setDateValue] = useState(new Date());
 
@@ -88,8 +88,8 @@ const Experience = ({ name, id, title }) => {
     <Fragment>
       <Box
         sx={{
-          marginBottom: '2px',
-          '&:hover': { border: '1px solid #d0d0d0' },
+          marginBottom: "2px",
+          "&:hover": { border: "1px solid #d0d0d0" },
         }}
       >
         <Accordion
@@ -102,19 +102,19 @@ const Experience = ({ name, id, title }) => {
           }}
         >
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon fontSize='large' />}
-            aria-controls='panel1bh-content'
-            id='panel1bh-header'
+            expandIcon={<ExpandMoreIcon fontSize="large" />}
+            aria-controls="panel1bh-content"
+            id="panel1bh-header"
           >
             <WorkOutlineOutlinedIcon
-              fontSize='medium'
-              sx={{ marginRight: '10px' }}
+              fontSize="medium"
+              sx={{ marginRight: "10px" }}
             />
-            <Typography sx={{ width: '33%', flexShrink: 0 }}>
+            <Typography sx={{ width: "33%", flexShrink: 0 }}>
               {title}
             </Typography>
           </AccordionSummary>
-          <AccordionDetails sx={{ padding: '30px' }}>
+          <AccordionDetails>
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -123,8 +123,8 @@ const Experience = ({ name, id, title }) => {
                       <Box
                         key={index}
                         sx={{
-                          marginBottom: '2px',
-                          '&:hover': { border: '1px solid #d0d0d0' },
+                          marginBottom: "2px",
+                          "&:hover": { border: "1px solid #d0d0d0" },
                         }}
                       >
                         <Accordion
@@ -132,29 +132,29 @@ const Experience = ({ name, id, title }) => {
                           onChange={handleInnerChange(`expanel_${index}`)}
                         >
                           <AccordionSummary
-                            expandIcon={<ExpandMoreIcon fontSize='large' />}
-                            aria-controls='panel1bh-content'
-                            id='panel1bh-header'
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1bh-content"
+                            id="panel1bh-header"
                           >
                             <WorkOutlineOutlinedIcon
-                              sx={{ marginRight: '10px' }}
+                              sx={{ marginRight: "10px" }}
                             />
-                            <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                            <Typography sx={{ width: "33%", flexShrink: 0 }}>
                               {title}
                             </Typography>
                           </AccordionSummary>
-                          <AccordionDetails sx={{ padding: '30px' }}>
+                          <AccordionDetails sx={{ padding: "30px" }}>
                             <Grid container spacing={3}>
                               <Grid item xs={12} sm={6}>
                                 <FormGroup>
                                   <TextField
                                     required
-                                    id='title'
-                                    name='title'
-                                    label='Job Title'
+                                    id="title"
+                                    name="title"
+                                    label="Job Title"
                                     fullWidth
-                                    autoComplete='given-name'
-                                    variant='standard'
+                                    autoComplete="given-name"
+                                    variant="standard"
                                     onChange={(newName) => {
                                       setTitleName(newName);
                                       setXrate(newName);
@@ -170,12 +170,12 @@ const Experience = ({ name, id, title }) => {
                                 <FormGroup>
                                   <TextField
                                     required
-                                    id='employer'
-                                    name='employer'
-                                    label='Employer'
+                                    id="employer"
+                                    name="employer"
+                                    label="Employer"
                                     fullWidth
-                                    autoComplete='given-name'
-                                    variant='standard'
+                                    autoComplete="given-name"
+                                    variant="standard"
                                     {...register(
                                       `experience.${index}.employer`,
                                       {
@@ -210,9 +210,9 @@ const Experience = ({ name, id, title }) => {
                             /> */}
                                     <DatePicker
                                       disableFuture
-                                      label='Responsive'
-                                      openTo='year'
-                                      views={['year', 'month', 'day']}
+                                      label="Responsive"
+                                      openTo="year"
+                                      views={["year", "month", "day"]}
                                       value={dateValue}
                                       onChange={(newValue) => {
                                         setDateValue(newValue);
@@ -231,12 +231,12 @@ const Experience = ({ name, id, title }) => {
                                   >
                                     <DatePicker
                                       required
-                                      views={['year', 'month']}
-                                      label='End date'
-                                      minDate={new Date('1950-01-01')}
-                                      maxDate={new Date('2030-12-31')}
+                                      views={["year", "month"]}
+                                      label="End date"
+                                      minDate={new Date("1950-01-01")}
+                                      maxDate={new Date("2030-12-31")}
                                       value={endDate}
-                                      format='MM/dd/yyyy'
+                                      format="MM/dd/yyyy"
                                       onChange={(val) => {
                                         setEndDate(val);
                                         setValue(
@@ -244,7 +244,7 @@ const Experience = ({ name, id, title }) => {
                                           val
                                         );
                                       }}
-                                      defaultValue={''}
+                                      defaultValue={""}
                                       renderInput={(params) => (
                                         <TextField {...params} />
                                       )}
@@ -256,11 +256,11 @@ const Experience = ({ name, id, title }) => {
                                 <FormGroup>
                                   <TextField
                                     required
-                                    id='city'
-                                    label='City, Country'
+                                    id="city"
+                                    label="City, Country"
                                     fullWidth
-                                    autoComplete='given-name'
-                                    variant='standard'
+                                    autoComplete="given-name"
+                                    variant="standard"
                                     {...register(`experience.${index}.city`)}
                                   />
                                 </FormGroup>
@@ -268,12 +268,12 @@ const Experience = ({ name, id, title }) => {
                               <Grid item xs={12}>
                                 <TextField
                                   required
-                                  id='outlined-textarea'
-                                  label='Description'
+                                  id="outlined-textarea"
+                                  label="Description"
                                   fullWidth
-                                  variant='standard'
+                                  variant="standard"
                                   multiline
-                                  placeholder='About your job'
+                                  placeholder="About your job"
                                   {...register(
                                     `experience.${index}.description`
                                   )}
@@ -286,13 +286,13 @@ const Experience = ({ name, id, title }) => {
                     ))}
                   </div>
                   <Box
-                    mt={5}
-                    sx={{ display: 'flex', justifyContent: 'flex-end' }}
+                    mt={2}
+                    sx={{ display: "flex", justifyContent: "flex-end" }}
                   >
                     <Grid container spacing={2}>
-                      <Grid item xs={6} md={4}>
+                      <Grid item xs={12} md={6}>
                         <Button
-                          type='button'
+                          type="button"
                           startIcon={<AddCircleIcon />}
                           onClick={() => {
                             append({ defaultValues }, true);
@@ -303,8 +303,6 @@ const Experience = ({ name, id, title }) => {
                         </Button>
                       </Grid>
                       {/* <Button type="submit">Submit</Button> */}
-
-                      <Grid item xs={6} md={4}></Grid>
                     </Grid>
                   </Box>
                 </form>

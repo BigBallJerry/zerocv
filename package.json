@@ -13,19 +13,27 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "date-fns": "^2.28.0",
+    "jspdf": "1.5.3",
     "mui-layout": "^1.2.9",
     "react": "^17.0.2",
+    "react-bootstrap": "^2.1.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.25.3",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-smooth-dnd": "^0.11.1",
+    "sass": "^1.49.7",
+    "styled-component": "^2.8.0",
+    "styled-components": "^5.3.3",
+    "tailwindcss": "^3.0.18",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm run watch:css && react-scripts start",
+    "build": "npm run watch:css && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/main.css"
   },
   "eslintConfig": {
     "extends": [
@@ -44,5 +52,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.6",
+    "postcss-cli": "^9.1.0"
   }
 }

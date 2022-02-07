@@ -1,16 +1,19 @@
-import { useContext } from 'react';
-import Box from '@mui/material/Box';
-import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from './widgets/Accordion';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Typography from '@mui/material/Typography';
-import { AccordionContext } from './AccordionWrapper';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import SportsSoccerOutlinedIcon from '@mui/icons-material/SportsSoccerOutlined';
+import { useContext, useState } from "react";
+import Box from "@mui/material/Box";
+// import {
+//   Accordion,
+//   AccordionSummary,
+//   AccordionDetails,
+// } from "./widgets/Accordion";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Typography from "@mui/material/Typography";
+import { AccordionContext } from "./AccordionWrapper";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import SportsSoccerOutlinedIcon from "@mui/icons-material/SportsSoccerOutlined";
 
 const Hobbies = ({ name, id, title }) => {
   const { expanded, setExpanded } = useContext(AccordionContext);
@@ -18,45 +21,52 @@ const Hobbies = ({ name, id, title }) => {
   const handleChange = (panel) => (event, newExpanded) => {
     event.preventDefault();
     setExpanded(newExpanded ? panel : false);
+    console.log("ExpandMoreIcon onClick expanded= " + expanded);
+  };
+
+  const [value, setValue] = useState("");
+
+  const handleTextFieldChange = (event) => {
+    setValue(event.target.value);
   };
 
   return (
     <Box
       sx={{
-        marginBottom: '2px',
-        '&:hover': { border: '1px solid #d0d0d0' },
+        marginBottom: "2px",
       }}
     >
       <Accordion expanded={expanded === id} onChange={handleChange(id)}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon fontSize='large' />}
-          aria-controls='panel1bh-content'
-          id='panel1bh-header'
+          expandIcon={<ExpandMoreIcon fontSize="large" />}
+          aria-controls="panel1bh-content"
+          id="panel1a-header"
         >
-          <SportsSoccerOutlinedIcon sx={{ marginRight: '10px' }} />
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>{title}</Typography>
+          <SportsSoccerOutlinedIcon
+            fontSize="medium"
+            sx={{ marginRight: "10px" }}
+          />
+          <Typography sx={{ width: "33%", flexShrink: 0 }}>{title}</Typography>
         </AccordionSummary>
-        <AccordionDetails sx={{ padding: '30px' }}>
-          <Grid container spacing={3}>
+        <AccordionDetails sx={{ paddingBottom: "30px" }}>
+          <Grid container>
             <Grid item xs={12}>
-              <TextField
-                id='address'
-                name='address'
-                label='Address'
-                fullWidth
-                autoComplete='address'
-                variant='standard'
-              />
+              <Typography variant="subtitle1" gutterBottom component="div">
+                A short summary of your experience that sits at the top of your
+                resume (2-3 sentences)
+              </Typography>
             </Grid>
             <Grid item xs={12}>
-              <TextField
-                id='address'
-                name='address'
-                label='Address'
-                fullWidth
-                autoComplete='address'
-                variant='standard'
-              />
+              <Box component="form" noValidate autoComplete="off">
+                <TextField
+                  id="outlined-multiline-static"
+                  label="How to describe your professional"
+                  multiline
+                  fullWidth
+                  rows={6}
+                  defaultValue=""
+                />
+              </Box>
             </Grid>
           </Grid>
         </AccordionDetails>
